@@ -1,0 +1,40 @@
+type Note {
+    id: ID!,
+    type: String,
+    name: String,
+    body: String
+}
+
+input NoteRequest {
+    type: String,
+    name: String,
+    body: String
+}
+
+type User{
+    id: ID!,
+    username: String,
+    password: String
+}
+
+input UserRequest{
+    username: String,
+    password: String
+}
+
+type Query {
+    Notes:[Note]
+    Note(id: ID):Note
+    deleteNote(id: ID):Boolean
+    findUserById(id:ID):User
+    findAllUsers:[User]
+    deleteUserById(id:ID):Boolean
+}
+
+type Mutation {
+    createNote(note: NoteRequest):Note
+    updateNote(note: NoteRequest):Note
+    createUser(user:UserRequest):User
+    updateUser(user:UserRequest):User
+}
+
